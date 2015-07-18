@@ -1,0 +1,20 @@
+{
+  "name": "koa-sanitize-uri",
+  "version": "0.1.0",
+  "description": "Sanitize an uri",
+  "repository": "tilap/koa-sanitize-uri",
+  "main": "lib/koa-sanitize-uri.js",
+  "scripts": {
+    "dev-compile": "./node_modules/.bin/babel src --out-dir lib",
+    "dev-check": "./node_modules/.bin/jshint src"
+  },
+  "author": "Tilap",
+  "license": "MIT",
+  "dependencies": {
+    "piggy-sanitize-uri": "^0.1.4"
+  },
+  "devDependencies": {
+    "babel": "^5.6.23",
+    "jshint": "^2.8.0"
+  }
+}

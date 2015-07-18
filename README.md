@@ -1,4 +1,4 @@
-koa-sanitize-uri [![NPM version][npm-image]][npm-url] [![Build Status][build-status-image]][build-status-url]
+koa-sanitize-uri [![NPM version][npm-image]][npm-url]
 ============================
 
 ## Purpose
@@ -17,7 +17,7 @@ import koaSanitizeUri from 'koa-sanitize-uri';
 
 let app= koa();
 
-app.use(sanitizeUri());
+app.use(koaSanitizeUri());
 
 // ...
 
@@ -34,20 +34,20 @@ You can give the middleware an option to ignore some paths.
 Example with one path:
 
 ```js
-app.use(sanitizeUri({ignore: '/assets'}));
+app.use(koaSanitizeUri({ignore: '/assets'}));
 
 ```
 
 Example with multi paths:
 
 ```js
-app.use(sanitizeUri({ignore: ['/assets', '/other/folder/']}));
+app.use(koaSanitizeUri({ignore: ['/assets', '/other/folder/']}));
 ```
 
 ### Custom redirection status
 
 ```js
-app.use(sanitizeUri({status: 301}));
+app.use(koaSanitizeUri({status: 301}));
 ```
 
 ## Developer

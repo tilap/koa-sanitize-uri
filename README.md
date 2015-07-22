@@ -27,6 +27,21 @@ app.listen(1337);
 
 ## Options
 
+All options in one view:
+
+```js
+app.use(koaSanitizeUri({
+  sanitize: {
+    simpleChars : true,
+    endingslash : false,
+    doubleshash : true,
+    lowercase : true,
+  },
+  code: 301,
+  ignore: ['/assets', '/statics']
+}));
+```
+
 ### Ignore paths
 
 You can give the middleware an option to ignore some paths.
@@ -49,6 +64,11 @@ app.use(koaSanitizeUri({ignore: ['/assets', '/other/folder/']}));
 ```js
 app.use(koaSanitizeUri({status: 301}));
 ```
+
+### Sanitize options
+
+You can pass all the [sanitizer options](https://github.com/tilap/piggy-sanitize-uri#options) with the key sanitize
+
 
 ## Developer
 

@@ -14,6 +14,8 @@ export default function(options={}) {
   }
   let status = options.status || 301;
 
+  let sanitizeOptions = options.sanitize || {};
+
   // Return middleware
   return function* sanitizeUri(next) {
     let skip = false;
@@ -28,7 +30,7 @@ export default function(options={}) {
       return yield next;
     }
 
-    let expectedUrl = uriSanitize(this.request.url);
+    let expectedUrl = uriSanitize(this.request.url, sanitizeOptions);
     if (expectedUrl!==this.request.url) {
       this.status = status;
       return this.redirect(expectedUrl);

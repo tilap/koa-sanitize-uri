@@ -9,6 +9,8 @@ Request URI are checked. If they have a bad format, the middleware throw a redir
 
 It's basically a good practice to keep consistant with URI and have only one URI per page content. It's aim is to avoid duplicate content (same content on 2 URI).
 
+Read the [CHANGELOG](https://github.com/tilap/koa-sanitize-uri/blob/master/CHANGELOG.md)
+
 ## Usage
 
 ```js

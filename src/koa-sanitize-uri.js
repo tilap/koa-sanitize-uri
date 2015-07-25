@@ -3,13 +3,13 @@ import uriSanitize from 'piggy-sanitize-uri';
 export default function(options={}) {
 
   // Extract options
-  let ignorePaths = [];
+  let ignore = [];
   if (options.ignore) {
     if (options.ignore.constructor===String) {
-      ignorePaths.push(options.ignore);
+      ignore.push(options.ignore);
     }
     else {
-      ignorePaths = options.ignore;
+      ignore = options.ignore;
     }
   }
   let status = options.status || 301;
@@ -20,8 +20,8 @@ export default function(options={}) {
   return function* sanitizeUri(next) {
     let skip = false;
 
-    ignorePaths.forEach(path => {
-      if (this.request.path.substr(0, path.length)===path) {
+    ignore.forEach(regex => {
+      if (this.request.path.match(regex)) {
         skip=true;
       }
     });

@@ -1,6 +1,6 @@
 {
   "name": "koa-sanitize-uri",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Sanitize an uri",
   "repository": "tilap/koa-sanitize-uri",
   "main": "lib/koa-sanitize-uri.js",

@@ -29,7 +29,7 @@ app.listen(1337);
 
 ## Options
 
-All options in one view:
+All options at once:
 
 ```js
 app.use(koaSanitizeUri({
@@ -40,25 +40,25 @@ app.use(koaSanitizeUri({
     lowercase : true,
   },
   code: 301,
-  ignore: ['/assets', '/statics']
+  ignore: [/assets\/.*/, /.*\.(css|js|jpg|png)$/i]
 }));
 ```
 
 ### Ignore paths
 
-You can give the middleware an option to ignore some paths.
+You can give the middleware an option to ignore file or paths matching regex.
 
-Example with one path:
+Example with one regex:
 
 ```js
-app.use(koaSanitizeUri({ignore: '/assets'}));
+app.use(koaSanitizeUri({ignore: /\/assets/}));
 
 ```
 
-Example with multi paths:
+Example with multi regex:
 
 ```js
-app.use(koaSanitizeUri({ignore: ['/assets', '/other/folder/']}));
+app.use(koaSanitizeUri({ignore: [/assets\/.*/, /.*\.(css|js|jpg|png)$/i]}));
 ```
 
 ### Custom redirection status
@@ -69,7 +69,7 @@ app.use(koaSanitizeUri({status: 301}));
 
 ### Sanitize options
 
-You can pass all the [sanitizer options](https://github.com/tilap/piggy-sanitize-uri#options) with the key sanitize
+You can pass all the [sanitizer options](https://github.com/tilap/piggy-sanitize-uri#options) with the key sanitize`
 
 
 ## Developer

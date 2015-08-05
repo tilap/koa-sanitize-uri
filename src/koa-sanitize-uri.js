@@ -14,11 +14,17 @@ export default function(options={}) {
   }
   let status = options.status || 301;
 
+  let methods = options.methods || ['GET'];
+
   let sanitizeOptions = options.sanitize || {};
 
   // Return middleware
   return function* sanitizeUri(next) {
     let skip = false;
+
+    if(methods.indexOf(this.method) < 0) {
+      skip = true;
+    }
 
     ignore.forEach(regex => {
       if (this.request.path.match(regex)) {

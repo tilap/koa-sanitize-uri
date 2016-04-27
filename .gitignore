@@ -4,7 +4,7 @@ node_modules
 .project
 *.sublime-project
 *.sublime-workspace
-
+npm-debug.log
 #*
 *$
 *.BAK

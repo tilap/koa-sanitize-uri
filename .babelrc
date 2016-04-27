@@ -1,5 +1,4 @@
 {
-  "blacklist": ["regenerator"],
-  "loose": [],
+  "presets": ["es2015", "stage-2"],
   "plugins": []
 }

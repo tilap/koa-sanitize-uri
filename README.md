@@ -1,6 +1,8 @@
 koa-sanitize-uri [![NPM version][npm-image]][npm-url]
 ============================
 
+**Important note: v1.0.0 is now compliant with koa@2. If you use koa < 2, install koa-sanitize-uri 0.1.x**
+
 ## Purpose
 
 koa-sanitize-uri is a **KOA middleware to sanitize request uri**.
@@ -17,8 +19,7 @@ Read the [CHANGELOG](https://github.com/tilap/koa-sanitize-uri/blob/master/CHANG
 import koa from 'koa';
 import koaSanitizeUri from 'koa-sanitize-uri';
 
-let app= koa();
-
+const app= koa();
 app.use(koaSanitizeUri());
 
 // ...
@@ -76,7 +77,7 @@ You can pass all the [sanitizer options](https://github.com/tilap/piggy-sanitize
 
 Installing dev dependencies, you can edit the package source. Then run:
 - ```npm run dev-compile``` for babel transpilation
-- ```npm run dev-check``` for jshint check
+- ```npm run dev-check``` for eslint check
 
 
 [npm-image]: https://img.shields.io/npm/v/koa-sanitize-uri.svg?style=flat

@@ -1,41 +1,34 @@
 import uriSanitize from 'piggy-sanitize-uri';
-
-export default function(options={}) {
-
+export default (options = {}) => {
   // Extract options
   let ignore = [];
   if (options.ignore) {
-    if (options.ignore.constructor===String) {
+    if (options.ignore.constructor === String) {
       ignore.push(options.ignore);
-    }
-    else {
+    } else {
       ignore = options.ignore;
     }
   }
-  let status = options.status || 301;
-
-  let sanitizeOptions = options.sanitize || {};
+  const status = options.status || 301;
+  const sanitizeOptions = options.sanitize || {};
 
   // Return middleware
-  return function* sanitizeUri(next) {
+  return async (ctx, next) => {
     let skip = false;
 
-    ignore.forEach(regex => {
-      if (this.request.path.match(regex)) {
-        skip=true;
+    ignore.forEach((regex) => {
+      if (ctx.request.path.match(regex)) {
+        skip = true;
       }
     });
 
-    if (skip) {
-      return yield next;
+    if (!skip) {
+      let expectedUrl = uriSanitize(ctx.request.url, sanitizeOptions);
+      if (expectedUrl !== ctx.request.url) {
+        ctx.status = status;
+        return ctx.redirect(expectedUrl);
+      }
     }
-
-    let expectedUrl = uriSanitize(this.request.url, sanitizeOptions);
-    if (expectedUrl!==this.request.url) {
-      this.status = status;
-      return this.redirect(expectedUrl);
-    }
-
-    return yield next;
+    return await next();
   };
-}
+};
